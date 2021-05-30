@@ -1,0 +1,31 @@
+\chapter{Capítulo 1}
+
+citando \cite{IDC2021}
+
+citando \cite{Witkowski2021}
+
+\url{https://www.marketwatch.com/story/videogames-are-a-bigger-industry-than-sports-and-movies-combined-thanks-to-the-pandemic-11608654990}
+
+Exemplo de tabela: ambiente table
+
+\begin{comment} % Este ambiente permite comentários em blocos.
+Veja que não aparece no texto compilado. Utilize para fazer comentários longos.
+\end{comment}
+
+%=============================================================
+% O ambiente table deve ser utilizado para tabelas pequenas, que não precisem ter quebras entre páginas.
+\begin{table}[H]
+    \centering
+    \begin{small}
+         \caption{Título da tabela}
+         \begin{tabular}{c c}
+         \hline
+            Nome   &  Valor\\
+         \hline
+            Teste 02   &  7.85\\
+            Teste 03   &  9.00\\
+        \hline
+         \end{tabular}
+    \end{small}
+    \label{tab:tituloTabela}
+\end{table}

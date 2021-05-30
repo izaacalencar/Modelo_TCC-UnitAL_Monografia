@@ -1,0 +1,321 @@
+%############################################################################################
+% Este modelo é iniciativa dos docentes do curso de Ciência da Computação da Unit/AL.
+% Versão do modelo de monografia: 1.0.
+% Criada por: Izaac Duarte de Alencar.
+% Última modificação: 27/05/2021.
+% Este modelo segue o padrão ABNT para formatação de texto científico.
+%############################################################################################
+
+\documentclass[
+				12pt,                   % Tamanho da fonte.
+				a4paper,                % Tamanho do papel.
+				oneside,                % Impressão no verso.
+				sumario=tradicional,    % Estilo tradicional de sumário
+				english,
+				brazil                  % O último idioma é o principal do documento
+				]{abntex2}
+				
+%----------------
+% PACOTES
+%----------------		
+% usar abnt-emphasize=bf para negritar os títulos em vez do itálico (usar dentro das configurações do pacote abntex2cite
+\usepackage[alf,
+			abnt-full-initials=yes,
+			abnt-repeated-author-omit=yes,
+			abnt-etal-text=default
+			%bibjustif			% Justifica as referências
+			]{abntex2cite}   	% Prepara Latex para citações ABNT (autor/data)
+\usepackage{pslatex}            % Usa fonte Times New Roman.
+%\usepackage{helvet}			% Importa fonte helvet/arial
+%\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{microtype} 			% Para melhorias de justificação
+\usepackage{graphicx} 			% Pacote para inserir imagens
+\usepackage{array}           	% Tabela tamanho
+\usepackage{float}				% Posicionamento tabela
+\usepackage{caption}       		% para maior controle sobre legendas
+\usepackage{hyperref}           % tratamento de URL
+\usepackage{enumitem}
+\usepackage{longtable}          % ambiente de tabelas longas com quebra de página
+\usepackage{multicol,multirow}
+\usepackage{lmodern}
+\usepackage[brazil]{babel}
+\usepackage{xurl}               % quebra de url
+\usepackage{comment}            % ambiente para comentários em blocos
+
+
+%----------------
+% Configurações gerais
+%----------------
+\renewcommand{\familydefault}{\sfdefault}   % Aplica Fonte Helvet
+\setlength{\parindent}{1.25cm}              % Recuo do parágrafo.
+\setlength{\absparindent}{1.25cm}           % Recuo do resumo/abstract
+\setlength{\parskip}{6pt}                   % Espaçamento entre parágrafos.
+\setlrmarginsandblock{3cm}{2cm}{*}          % Margens superior e direita.
+\setulmarginsandblock{3cm}{2cm}{*}          % Margens esquerda e inferior
+\setsecheadstyle{\bfseries \normalsize}     % Estilo de sections
+%\chapterstyle{article}				        % Estilo dos Capítulos
+
+% Configuração para evitar separação de sílaba
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+\hyphenchar\font=-1
+\sloppy
+% final da configuração
+
+% ---------------
+% Informações Cabeçalho
+% ---------------
+\title{Título do monografia: sub-título}
+\author{Nome(s) do(s) Aluno(s)}                 % mais de um autor colocar ao final de cada nome \\
+\orientador{Profº. Nome do Orientador}
+\local{Maceió - Alagoas}
+\data{2021.1}
+\instituicao{CENTRO UNIVERSITÁRIO TIRADENTES}
+\preambulo{Monografia apresentada como pré-requisito para obtenção de Bacharelado em Ciência da Computação.}
+
+
+% ---------------
+% Configurações especias
+% ---------------
+\usepackage{minted}                              % ambiente para códigos
+\setsubsecheadstyle{\bfseries \normalsize}       % configuração de formatação (tamanho e estilo) das subsections
+
+% ---------------
+% Informações do PDF
+% ---------------
+\makeatletter
+
+\hypersetup{
+pdftitle={\@title},
+pdfauthor={\@author},
+pdfsubject={\@title},
+colorlinks=true,            % false: boxed links; true: colored links
+linkcolor=black,            % color of internal links
+citecolor=black,            % color of links to bibliography
+filecolor=magenta,          % color of file links
+urlcolor=black,
+bookmarksdepth=4
+}
+
+\makeatother
+
+% Definição de diretório de imagens
+\graphicspath{{IMG/}}
+
+% ---------------
+% Reescrevendo a capa
+% ---------------
+\makeatletter
+\renewcommand{\imprimircapa}{%
+
+\begin{capa}%
+
+% A figura adicionada é o logotipo da Unit e não pode ser removido da pasta IMG
+% Este ambiente é obrigatório na capa.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth] {unit}\\
+\end{figure}
+\center
+
+\ABNTEXchapterfont\bfseries\large\imprimirinstituicao\\
+\ABNTEXchapterfont\large\ CURSO DE CIÊNCIA DA COMPUTAÇÃO\\
+
+
+\vspace{3cm}
+
+{\ABNTEXchapterfont\large\imprimirautor}
+
+\vspace{3cm}
+
+\begin{center}
+\SingleSpacing
+{\ABNTEXchapterfont\bfseries\Large\imprimirtitulo}
+\end{center}
+
+\vfill
+
+{\large\imprimirlocal}
+
+{\large\imprimirdata}
+\vspace*{1cm}
+
+\end{capa}
+
+}
+\makeatother
+
+% ---------------
+% Reescrevendo a folha de rosto
+% ---------------
+\makeatletter
+\renewcommand{\folhaderostocontent}{
+
+\begin{center}
+
+{\ABNTEXchapterfont\large\imprimirautor}
+
+\vspace{3.5cm}
+\begin{center}
+\SingleSpacing
+\ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+\end{center}
+\vspace{1.0cm}
+
+\abntex@ifnotempty{\imprimirpreambulo}{%
+\hspace{.45\textwidth}
+\begin{minipage}{.5\textwidth}
+\SingleSpacing
+\fontsize{10pt}{\baselineskip}\selectfont \imprimirpreambulo
+
+Orientador: \imprimirorientador
+\end{minipage}%
+\vspace*{\fill}
+}%
+
+\vspace*{\fill}
+
+{\large\imprimirlocal}
+\par
+{\large\imprimirdata}
+%\vspace*{1cm}
+
+\end{center}
+
+}
+\makeatother
+
+% ---------------
+% Início do documento
+% ---------------
+\begin{document}
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+
+% ---------------
+% Capa
+% ---------------
+\imprimircapa
+% ---------------
+
+% ---------------
+% Folha de Rosto
+% ---------------
+\imprimirfolhaderosto
+% ---------------
+
+% ---------------
+% Folha de Aprovação
+% ---------------
+\include{PRETEXTUAL/folha_aprovacao}
+% ---------------
+
+% ---------------
+% Dedicatória
+% ---------------
+\include{PRETEXTUAL/dedicatoria}
+% ---------------
+
+% ---------------
+% Agradecimentos
+% ---------------
+\include{PRETEXTUAL/agradecimentos}
+% ---------------
+
+% ---------------
+% Epígrafe
+% ---------------
+\include{PRETEXTUAL/epigrafe}
+% ---------------
+
+% ---------------
+% Resumo
+% ---------------
+\include{PRETEXTUAL/resumo}
+% ---------------
+
+% ---------------
+% Lista de Figuras
+% ---------------
+\listoffigures
+% ---------------
+
+% ---------------
+% Lista de Tabelas
+% ---------------
+\newpage
+\listoftables
+% ---------------
+
+% Inserir o SUMÁRIO
+\newpage
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+% ---------------
+% Primeira Página
+% ---------------
+\pagestyle{simple}
+%\input{primeirapagina}
+% ---------------
+
+%############################################################
+% O comando \input adicionará o arquivo externo para montar o
+% texto final do trabalho. Crie os arquivos dentro da pasta
+% "CAPITULOS" e adicione-os em ordem como abaixo.
+%############################################################
+
+% ---------------
+% INTRODUÇÃO
+% ---------------
+\pagestyle{simple}
+\input{CAPITULOS/introducao}
+% ---------------
+
+% ---------------
+% CAPITULO1
+% ---------------
+\pagestyle{simple}
+\input{CAPITULOS/capitulo1}
+% ---------------
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS (Referências, Glossário, Apêndices)
+% ----------------------------------------------------------
+\bibliography{library}
+
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+% Elemento de produção própria do autor. Não é um elemento obrigatório
+
+% ---
+% Inicia os apêndices
+% ---
+\begin{apendicesenv}
+
+% Imprime uma página indicando o início dos apêndices
+\partapendices
+
+%\include{APENDICES/revisaoSistematica}
+
+\end{apendicesenv}
+
+
+%----------------
+% Fim do Documento
+%----------------
+\end{document}

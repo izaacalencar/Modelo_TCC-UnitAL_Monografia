@@ -1,0 +1,68 @@
+% O comando \chapter abre um capítulo dentro do texto
+\chapter{Introdução}
+
+
+% Ambiente para adicionar Figura no texto
+% O argumento "H" força o posicionamento da figura no local onde está colocado no texto
+% O comando \caption adiciona um título da figura
+% O comando \label adiciona uma chave de referência para citação da figura no texto
+% O comando \includegraphics indica qual é a figura que será adicionada
+% O comando \small permite colocar a texto com fonte menor para referência da figura
+\begin{figure}[H]
+\centering
+\caption{Problema de Pesquisa.}
+\label{fig:problemaPesquisa}
+\includegraphics[width=\textwidth] {unit}\\
+\small{Fonte: o autor.}
+\end{figure}
+
+A Figura~\ref{fig:problemaPesquisa} fala sobre
+
+% O comando \section abre uma seção de texto dentro do capítulo
+\section{Exemplo de seção}
+
+\subsection{Exemplo de subsection}
+
+% -------------------------
+% ambiente de código
+%\begin{minted}{java}
+%\end{minted}
+% -------------------------
+
+% Criando citação no texto
+% \cite{barbieri2019} - (BARBIERI, 2019)
+% \citeauthor{barbieri2019} - BARBIERI (2019)
+
+% Exemplo de listas no latex com ambiente itemize de listagem interna.
+\begin{itemize}
+    \item item 1
+    \item item 2
+    
+    \begin{itemize}
+        \item teste
+    \end{itemize}
+    
+\end{itemize}
+
+% Exemplo de lista numerada com o ambiente Enumerate
+\begin{enumerate}
+    \item item 1
+    \item item 2
+\end{enumerate}
+
+
+% Criando citação no texto
+% \cite{barbieri2019} - (BARBIERI, 2019)
+% \citeauthor{barbieri2019} - BARBIERI (2019)
+Essa citação é \textit{indireta} é faz parte do exemplo do cite da ABNT \cite{barbieri2019}.
+
+Segundo \citeauthor{barbieri2019} (2019), isso é uma citação também.
+
+% para citação direta
+% \begin{citacao}
+% é uma citação direta \cite[p. 32]{barbieri2019}. - (BARBIERI, 2019, p. 32)
+% \end{citacao}
+% Para citação direta, se faz necessário a indicação do número da página. Isto é realizado com a inclusão do [] antes da indicação da chave de citação. EX: \cite[p. 21]{chave/-citacao}
+\begin{citacao}
+é um exemplo de citação direta que preciso colocar de forma recuada no texto \cite[p. 32]{barbieri2019}. 
+\end{citacao}
